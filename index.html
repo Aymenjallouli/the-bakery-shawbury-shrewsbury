@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bakery, Shawbury — bakery &amp; sandwich shop in Shrewsbury</title>
+<meta name="description" content="Bakery and sandwich shop at 2 Drayton Rd, Shawbury. Rolls made to order, hot sausage rolls, pasties, cakes and buffet lunches. Rated 4.7 on Google.">
+<meta property="og:title" content="The Bakery, Shawbury">
+<meta property="og:description" content="Rolls made to order, hot sausage rolls, pasties, Scotch eggs and fresh cream cakes on Drayton Road, Shawbury.">
+<meta name="theme-color" content="#24304a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324304a'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='%23f5efe4'%3EB%3C/text%3E%3Ccircle cx='48' cy='17' r='4' fill='%23c4643c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Commissioner:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* ==========================================================================
+   DESIGN DECISIONS — The Bakery, Shawbury
+   Direction: WARM ARTISAN. A village bakery on Drayton Road: brick front,
+     scalloped awning, chalkboard A-board, navy shaker counter, floured baps in
+     white paper. The site should feel like that counter: paper, ink, crust.
+   Palette (from the photos): --bg flour-paper off-white (the sandwich paper),
+     --brand the deep navy of the counter cabinets (the one strong colour move,
+     used as full colour fields), --accent the brick/crust terracotta of the
+     shopfront and the bap tops, used sparingly for emphasis. Neutrals do the rest.
+   Type: Young Serif (single, friendly, bakery-sign serif) for display, set big
+     with tight leading; Commissioner (humanist, warm) for body and tracked
+     small-caps labels. 3 weights total.
+   Hero: typographic poster + framed shopfront photo, with a rotating chalk-style
+     stamp lifted from the A-board ("Fresh made sandwiches · Pasties & cakes").
+   Signature moments: (1) a giant pull quote, "the quality to pastry ratio is
+     perfection", next to an oversized 4.7; (2) a live "Open now / until 2 pm"
+     statement set as large as a headline.
+   Rhythm: poster hero → navy marquee of what reviewers order → editorial quote +
+     swipe rail → sticky photo split + oversized numbered list → offset collage →
+     navy colour-field (buffet lunches) → live clock + hours + map split →
+     big-type contact → navy footer. No two neighbours share a layout.
+   ========================================================================== */
+:root{
+  --bg:#f5efe4; --surface:#ebe1d0; --ink:#1d2436; --ink-soft:#4f5566;
+  --brand:#24304a; --brand-ink:#f5efe4; --accent:#a3472a; --accent-soft:#c4643c;
+  --line:rgba(29,36,54,.16); --line-strong:rgba(29,36,54,.4);
+  --butter:#e8bf6a;
+
+  --f-display:"Young Serif", Georgia, "Times New Roman", serif;
+  --f-body:"Commissioner", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --step--1:clamp(.875rem, .85rem + .12vw, .9375rem);
+  --step-0:clamp(1.0625rem, 1.01rem + .22vw, 1.1875rem);
+  --step-1:clamp(1.25rem, 1.15rem + .45vw, 1.5rem);
+  --step-2:clamp(1.5rem, 1.3rem + 1vw, 2.125rem);
+  --step-3:clamp(1.875rem, 1.45rem + 2vw, 3.125rem);
+  --step-4:clamp(2.25rem, 1.6rem + 3.4vw, 4.5rem);
+  --step-5:clamp(2.75rem, 1.6rem + 5.6vw, 6.5rem);
+  --step-6:clamp(3.2rem, 1rem + 10.4vw, 8rem);
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px; --space-10:128px;
+  --section:clamp(64px, 12vw, 160px);
+  --gutter:clamp(20px, 5vw, 48px);
+  --max:1280px;
+
+  --r-1:6px; --r-2:22px;
+
+  --ease-out:cubic-bezier(.16,1,.3,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
+  --dur-1:180ms; --dur-2:400ms; --dur-3:800ms;
+  --bar-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;
+  font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .12 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p{margin:0;text-wrap:pretty}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1;letter-spacing:-.02em;text-wrap:balance}
+ul,ol{margin:0;padding:0;list-style:none}
+::selection{background:var(--accent);color:var(--bg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:var(--space-4);top:-100px;z-index:200;background:var(--ink);color:var(--bg);padding:var(--space-3) var(--space-4);border-radius:var(--r-1)}
+.skip:focus{top:var(--space-4)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--gutter)}
+section{scroll-margin-top:72px}
+.label{font-family:var(--f-body);font-weight:600;font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:var(--space-3)}
+.label::before{content:"";width:28px;height:1px;background:currentColor}
+.label b{font-family:var(--f-display);font-weight:400;letter-spacing:0;text-transform:none;font-size:1.15em;color:var(--accent)}
+.ulink{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;text-decoration-color:var(--line-strong);transition:text-decoration-color var(--dur-1)}
+.draw{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size var(--dur-2) var(--ease-out);padding-bottom:2px}
+@media (hover:hover){.draw:hover{background-size:100% 1px}.ulink:hover{text-decoration-color:currentColor}}
+.stars{color:var(--accent);letter-spacing:.08em;font-size:.95em}
+
+/* Buttons */
+.btn{--b:var(--brand);display:inline-flex;align-items:center;justify-content:center;gap:var(--space-3);min-height:52px;padding:0 var(--space-5);
+  border-radius:999px;border:1.5px solid var(--b);background:var(--b);color:var(--brand-ink);font:600 var(--step--1)/1 var(--f-body);letter-spacing:.04em;
+  text-decoration:none;position:relative;overflow:hidden;isolation:isolate;transition:transform var(--dur-1) var(--ease-out),color var(--dur-2) var(--ease-out)}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);transform:translateY(101%);transition:transform var(--dur-2) var(--ease-out)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--light{--b:var(--brand-ink);color:var(--brand)}
+.btn--light.btn--ghost{color:var(--brand-ink)}
+.btn:active{transform:scale(.97)}
+@media (hover:hover){.btn:hover::after{transform:none}.btn:hover{color:var(--bg);border-color:var(--accent)}}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Live status pill */
+.status{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--step--1);font-weight:600;letter-spacing:.02em}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink-soft);flex:none}
+.status[data-state="open"]::before{background:#3c8a4e;box-shadow:0 0 0 0 rgba(60,138,78,.5);animation:pulse 2.4s var(--ease-out) infinite}
+.status[data-state="soon"]::before{background:var(--accent-soft)}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(60,138,78,0)}100%{box-shadow:0 0 0 0 rgba(60,138,78,0)}}
+
+/* ---------- Header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:saturate(1.2);
+  border-bottom:1px solid transparent;transition:border-color var(--dur-2),padding var(--dur-2) var(--ease-out)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);height:72px;transition:height var(--dur-2) var(--ease-out)}
+.hdr.is-scrolled{border-bottom-color:var(--line)}
+.hdr.is-scrolled .wrap{height:58px}
+.mark{display:flex;flex-direction:column;justify-content:center;min-height:50px;text-decoration:none;line-height:1;transform-origin:left center;transition:transform var(--dur-2) var(--ease-out)}
+.mark span:first-child{font-family:var(--f-display);font-size:1.5rem;letter-spacing:-.01em}
+.mark span:last-child{font-size:.6875rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-top:5px}
+.hdr.is-scrolled .mark{transform:scale(.86)}
+.nav{display:none}
+.hdr-cta{display:none}
+.menu-btn{display:inline-flex;align-items:center;gap:var(--space-3);min-height:48px;min-width:48px;padding:0 var(--space-2) 0 var(--space-4);border:0;background:none;color:var(--ink);
+  font:600 var(--step--1)/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;position:relative;z-index:61}
+.burger{width:26px;height:12px;position:relative}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:1.6px;background:currentColor;transition:transform var(--dur-2) var(--ease-out),top var(--dur-2) var(--ease-out)}
+.burger::before{top:0}.burger::after{top:10px}
+.menu-open .burger::before{top:5px;transform:rotate(45deg)}
+.menu-open .burger::after{top:5px;transform:rotate(-45deg)}
+.menu-open .menu-btn{color:var(--brand-ink)}
+.menu-open .hdr{z-index:70;background:transparent;border-bottom-color:transparent}
+.menu-open .hdr .mark{color:var(--brand-ink)}
+.menu-open .hdr .mark span:last-child{color:var(--butter)}
+.menu{position:fixed;inset:0;z-index:60;background:var(--brand);color:var(--brand-ink);padding:110px var(--gutter) calc(var(--space-7) + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;justify-content:space-between;visibility:hidden;clip-path:inset(0 0 100% 0);
+  transition:clip-path var(--dur-3) var(--ease-out),visibility 0s linear var(--dur-3)}
+.menu-open .menu{visibility:visible;clip-path:inset(0);transition:clip-path var(--dur-3) var(--ease-out)}
+.menu ol{counter-reset:m}
+.menu li{counter-increment:m;border-bottom:1px solid rgba(245,239,228,.18);overflow:hidden}
+.menu li a{display:flex;align-items:baseline;gap:var(--space-4);padding:var(--space-3) 0;font-family:var(--f-display);font-size:clamp(2rem,9vw,3.5rem);line-height:1.15;text-decoration:none;
+  transform:translateY(100%);transition:transform var(--dur-3) var(--ease-out)}
+.menu li a::before{content:"0" counter(m);font:600 .75rem/1 var(--f-body);letter-spacing:.14em;color:var(--butter)}
+.menu-open .menu li a{transform:none;transition-delay:calc(120ms + var(--i) * 70ms)}
+.menu-foot{display:grid;gap:var(--space-2);font-size:var(--step--1);color:rgba(245,239,228,.8)}
+.menu-foot a{min-height:44px;display:inline-flex;align-items:center}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:var(--space-4);padding-bottom:var(--space-8);position:relative}
+.hero-top,.hero-bottom{grid-column:1/-1}
+.eyebrow{font-size:var(--step--1);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center}
+.eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
+.hero h1{font-size:clamp(3rem, .2rem + 12.3vw, 7.25rem);line-height:.95;letter-spacing:-.035em;margin:var(--space-3) 0 0;text-wrap:balance}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .ln>span{display:block}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:var(--step-1);line-height:1.5;color:var(--ink-soft);max-width:34ch;margin-top:var(--space-4)}
+.rating-chip{display:inline-flex;align-items:center;gap:var(--space-2);min-height:44px;text-decoration:none;font-weight:600}
+.rating-chip strong{font-family:var(--f-display);font-weight:400;font-size:1.35em}
+.rating-chip small{font-weight:400;color:var(--ink-soft);font-size:var(--step--1)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+.hero-ctas .btn{flex:1 1 auto}
+.hero-media{grid-column:1/-1;margin:var(--space-6) 0 var(--space-6);position:relative}
+.frame{position:relative;border-radius:var(--r-2);overflow:hidden;aspect-ratio:5/4;background:var(--surface)}
+.frame .par{position:absolute;inset:-6% 0}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:40% 60%}
+.hero-media figcaption{margin-top:var(--space-3);font-size:var(--step--1);color:var(--ink-soft);display:flex;justify-content:space-between;gap:var(--space-4)}
+.stamp{position:absolute;width:112px;height:112px;right:12px;bottom:-40px;z-index:2;color:var(--brand)}
+.stamp .ring{width:100%;height:100%;animation:spin 38s linear infinite}
+.stamp .ring text{font:600 10.5px var(--f-body);letter-spacing:.24em;text-transform:uppercase;fill:currentColor}
+.stamp .disc{fill:var(--bg)}
+.stamp .core{position:absolute;inset:0;display:grid;place-items:center}
+.stamp .core svg{width:44px;height:44px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Marquee ---------- */
+.band{background:var(--brand);color:var(--brand-ink);padding:var(--space-6) 0 var(--space-5);overflow:hidden}
+.band-head{display:flex;justify-content:space-between;gap:var(--space-4);font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(245,239,228,.7);margin-bottom:var(--space-4)}
+.band-note{display:none}
+@media (min-width:640px){.band-note{display:inline}}
+.marquee{display:flex;width:max-content;animation:mq 42s linear infinite}
+.marquee ul{display:flex;align-items:center;gap:var(--space-6);padding-right:var(--space-6);font-family:var(--f-display);font-size:var(--step-3);white-space:nowrap;line-height:1.2}
+.marquee li{display:flex;align-items:center;gap:var(--space-6)}
+.marquee li::after{content:"";width:14px;height:14px;background:var(--butter);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+.marquee sup{font:600 .75rem var(--f-body);color:var(--butter);margin-left:6px;vertical-align:super;letter-spacing:.04em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Reviews ---------- */
+.reviews{padding-block:var(--section)}
+.score{grid-column:1/-1;display:flex;align-items:flex-end;gap:var(--space-5);margin-top:var(--space-7);padding-bottom:var(--space-6);border-bottom:1px solid var(--line)}
+.score .big{font-family:var(--f-display);font-size:clamp(5.5rem, 3rem + 11vw, 10rem);line-height:.8;letter-spacing:-.04em}
+.score p{font-size:var(--step--1);color:var(--ink-soft);padding-bottom:6px}
+.score p .stars{display:block;font-size:1.25rem;margin-bottom:var(--space-1)}
+.score a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--ink)}
+.pull{grid-column:1/-1;margin:var(--space-7) 0 0}
+.pull .pre{font-size:var(--step-1);line-height:1.45;color:var(--ink-soft);max-width:36ch}
+.pull blockquote{margin:var(--space-4) 0 0;font-family:var(--f-display);font-size:var(--step-5);line-height:.98;letter-spacing:-.03em;text-wrap:balance}
+.pull blockquote em{font-style:normal;color:var(--accent)}
+.pull figcaption{margin-top:var(--space-5);display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-4);align-items:center;font-size:var(--step--1);color:var(--ink-soft)}
+.pull figcaption b{color:var(--ink);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.rail-wrap{margin-top:var(--space-9)}
+.rail-head{display:flex;justify-content:space-between;align-items:end;gap:var(--space-4);margin-bottom:var(--space-5)}
+.rail-head h3{font-size:var(--step-2)}
+.rail-hint{font-size:var(--step--1);color:var(--ink-soft);display:flex;align-items:center;gap:var(--space-2);white-space:nowrap}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:var(--space-4);overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);margin-inline:auto;max-width:var(--max);padding-bottom:var(--space-4);scrollbar-width:none;overscroll-behavior-x:contain}
+.rail::-webkit-scrollbar{display:none}
+.card{scroll-snap-align:start;background:var(--surface);border-radius:var(--r-1);padding:var(--space-6) var(--space-5) var(--space-5);display:flex;flex-direction:column;gap:var(--space-5);position:relative}
+.card blockquote{margin:0;font-family:var(--f-display);font-size:var(--step-1);line-height:1.35;letter-spacing:-.005em}
+.card--short blockquote{font-size:clamp(1.75rem, 1.45rem + .8vw, 2.125rem);line-height:1.1;letter-spacing:-.015em}
+.card footer{margin-top:auto;padding-top:var(--space-4);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);font-size:var(--step--1)}
+.card footer b{font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.card footer span{color:var(--ink-soft)}
+
+/* ---------- Counter (sticky split + numbered list) ---------- */
+.counter{background:var(--surface);padding-block:var(--section)}
+.counter-side{grid-column:1/-1}
+.counter-side h2{font-size:var(--step-5);margin-top:var(--space-5);letter-spacing:-.03em}
+.counter-side p{margin-top:var(--space-5);max-width:38ch;color:var(--ink-soft)}
+.counter-side figure{margin:var(--space-7) 0 0}
+.photo{border-radius:var(--r-1);overflow:hidden;background:var(--bg)}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-3) var(--ease-out)}
+@media (hover:hover){.photo:hover img{transform:scale(1.03)}}
+.counter-side .photo{aspect-ratio:4/3}
+.counter-side figcaption,.collage figcaption{margin-top:var(--space-3);font-size:var(--step--1);color:var(--ink-soft)}
+.menu-list{grid-column:1/-1;margin-top:var(--space-8);counter-reset:item;border-top:1px solid var(--line-strong)}
+.menu-list li{counter-increment:item;display:grid;grid-template-columns:auto 1fr;column-gap:var(--space-5);padding:var(--space-6) 0;border-bottom:1px solid var(--line)}
+.menu-list li::before{content:counter(item,decimal-leading-zero);font-family:var(--f-display);font-size:var(--step-3);line-height:1;color:var(--accent);min-width:1.6em;grid-row:span 3}
+.menu-list h3{font-size:var(--step-3);line-height:1.02}
+.menu-list p{margin-top:var(--space-3);color:var(--ink-soft);max-width:46ch}
+.menu-list .meta{margin-top:var(--space-4);display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.menu-list .meta span{font-size:.8125rem;font-weight:600;letter-spacing:.06em;padding:6px 12px;border:1px solid var(--line-strong);border-radius:999px;white-space:nowrap}
+
+/* ---------- Collage ---------- */
+.gallery{padding-block:var(--section)}
+.gallery-head{grid-column:1/-1;display:flex;flex-direction:column;gap:var(--space-5)}
+.gallery-head h2{font-size:var(--step-4)}
+.collage{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-6) var(--space-4);margin-top:var(--space-8)}
+.collage figure{margin:0}
+.c1{grid-column:1/-1}.c1 .photo{aspect-ratio:4/5}
+.c1 .photo img{object-position:50% 60%}
+.c2{grid-column:1/3}.c2 .photo{aspect-ratio:3/4}
+.c3{grid-column:3/5;margin-top:var(--space-9)!important}.c3 .photo{aspect-ratio:3/4}
+.c3 .photo img{object-position:50% 38%}
+.c3 figcaption q{font-family:var(--f-display);font-size:1.05rem;color:var(--ink);line-height:1.35;display:block;margin-bottom:var(--space-2);quotes:"“" "”" "‘" "’"}
+
+/* ---------- Buffet lunches (navy field) ---------- */
+.lunch{background:var(--brand);color:var(--brand-ink);padding-block:var(--section);position:relative;overflow:hidden}
+.lunch .label{color:rgba(245,239,228,.72)}
+.lunch .label b{color:var(--butter)}
+.lunch-copy{grid-column:1/-1}
+.lunch h2{font-size:var(--step-5);margin-top:var(--space-5);letter-spacing:-.03em}
+.lunch h2 em{font-style:normal;color:var(--butter)}
+.lunch-copy p{margin-top:var(--space-5);max-width:40ch;color:rgba(245,239,228,.82)}
+.lunch-list{margin-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.lunch-list li{border:1px solid rgba(245,239,228,.32);border-radius:999px;padding:8px 14px;font-size:var(--step--1)}
+.lunch-quote{grid-column:1/-1;margin:var(--space-8) 0 0;padding-top:var(--space-6);border-top:1px solid rgba(245,239,228,.25)}
+.lunch-quote blockquote{margin:0;font-family:var(--f-display);font-size:var(--step-2);line-height:1.25}
+.lunch-quote figcaption{margin-top:var(--space-5);font-size:var(--step--1);color:rgba(245,239,228,.75);display:flex;gap:var(--space-3);align-items:center}
+.lunch-quote figcaption b{color:var(--brand-ink);letter-spacing:.06em;text-transform:uppercase}
+.lunch .stars{color:var(--butter)}
+.lunch-ctas{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-7)}
+
+/* ---------- Visit: live clock + hours + map ---------- */
+.visit{padding-block:var(--section)}
+.now{grid-column:1/-1;margin-top:var(--space-6)}
+.now-big{font-family:var(--f-display);font-size:var(--step-6);line-height:.92;letter-spacing:-.04em;text-wrap:balance}
+.now-big span{display:block;color:var(--accent)}
+.now-big[data-state="closed"] span{color:var(--ink-soft)}
+.now-sub{margin-top:var(--space-4);color:var(--ink-soft)}
+.hours{grid-column:1/-1;margin-top:var(--space-8)}
+.hours h3,.where h3{font-family:var(--f-body);font-weight:600;font-size:var(--step--1);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:var(--space-4)}
+.hours table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours tr{border-bottom:1px solid var(--line)}
+.hours th,.hours td{padding:14px 0;text-align:left;font-weight:400}
+.hours td{text-align:right;white-space:nowrap}
+.hours tr.is-closed td{color:var(--ink-soft)}
+.hours tr.is-today{color:var(--accent)}
+.hours tr.is-today th{font-weight:600}
+.hours tr.is-today th::after{content:"Today";margin-left:var(--space-3);font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:3px 8px;vertical-align:2px}
+.facts{margin-top:var(--space-6);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.facts li{display:flex;gap:var(--space-3);align-items:flex-start;font-size:var(--step--1);line-height:1.4}
+.facts .ico{color:var(--accent);margin-top:-2px}
+.where{grid-column:1/-1;margin-top:var(--space-8)}
+.where address{font-style:normal;font-family:var(--f-display);font-size:var(--step-2);line-height:1.2}
+.map{margin-top:var(--space-5);border-radius:var(--r-2);overflow:hidden;aspect-ratio:4/3;background:var(--surface);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) sepia(.12)}
+.map-fallback{position:absolute;inset:0;display:grid;place-items:center;font-weight:600;color:var(--ink-soft)}
+.where .btns{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-5)}
+
+/* ---------- Contact ---------- */
+.contact{padding-block:var(--section);border-top:1px solid var(--line)}
+.contact-in{grid-column:1/-1}
+.contact h2{font-size:var(--step-4);margin-top:var(--space-5)}
+.phone-big{display:inline-block;margin-top:var(--space-6);font-family:var(--f-display);font-size:clamp(2.6rem, .6rem + 9vw, 7.5rem);line-height:1;letter-spacing:-.03em;text-decoration:none;color:var(--brand);white-space:nowrap}
+.contact-list{margin-top:var(--space-7);display:grid;gap:0;border-top:1px solid var(--line)}
+.contact-list a{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:64px;border-bottom:1px solid var(--line);text-decoration:none;font-size:var(--step-0);overflow-wrap:anywhere}
+@media (min-width:640px){.contact-list a{font-size:var(--step-1)}}
+.contact-list a span{display:flex;align-items:center;gap:var(--space-4);min-width:0}
+.contact-list small{font-size:var(--step--1);color:var(--ink-soft);letter-spacing:.1em;text-transform:uppercase;font-weight:600;flex:none}
+.contact-list .arrow{transition:transform var(--dur-2) var(--ease-out);flex:none}
+@media (hover:hover){.contact-list a:hover .arrow{transform:translateX(6px)}.contact-list a:hover{color:var(--accent)}}
+
+/* ---------- Footer ---------- */
+.ftr{background:var(--ink);color:rgba(245,239,228,.78);padding:var(--space-8) 0 var(--space-6);font-size:var(--step--1)}
+.ftr a.mark{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0}
+.ftr .mark span:first-child{color:var(--brand-ink);font-size:2.25rem}
+.ftr .mark span:last-child{color:var(--butter)}
+.ftr-grid{display:grid;gap:var(--space-6)}
+.ftr a{text-decoration:none;display:inline-flex;align-items:center;gap:var(--space-2);min-height:44px}
+.ftr-bottom{margin-top:var(--space-7);padding-top:var(--space-5);border-top:1px solid rgba(245,239,228,.15);display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-3)}
+
+/* ---------- Sticky mobile bar ---------- */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -1px 0 var(--line);transform:translateY(0);transition:transform var(--dur-2) var(--ease-out)}
+.bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:var(--bar-h);background:var(--bg);text-decoration:none;font-size:.8125rem;font-weight:600;letter-spacing:.04em}
+.bar a:first-child{background:var(--brand);color:var(--brand-ink)}
+.bar a:active{background:var(--surface)}
+.bar a:first-child:active{background:var(--ink)}
+.menu-open .bar{transform:translateY(110%)}
+@media (max-width:767px){body{padding-bottom:calc(var(--bar-h) + env(safe-area-inset-bottom))}}
+@media (min-width:768px){.bar{display:none}}
+
+/* ---------- ≥640 ---------- */
+@media (min-width:640px){
+  .rail{grid-auto-columns:46%}
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .stamp{width:150px;height:150px;bottom:-56px;right:24px}
+  .frame{aspect-ratio:16/10}
+}
+/* ---------- ≥960: 12 columns ---------- */
+@media (min-width:960px){
+  .grid{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .menu-btn{display:none}
+  .nav{display:flex;gap:var(--space-6);font-size:var(--step--1);font-weight:600;letter-spacing:.04em}
+  .nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+  .hdr-cta{display:inline-flex;min-height:44px}
+  .hero{padding-top:var(--space-8);padding-bottom:var(--space-9)}
+  .hero-top{grid-column:1/8;grid-row:1;align-self:end;position:relative;z-index:2}
+  .hero-bottom{grid-column:1/7;grid-row:2;align-self:start;margin-top:var(--space-6)}
+  .hero-media{grid-column:8/13;grid-row:1/3;margin:0}
+  .frame{aspect-ratio:auto;height:min(78svh,720px)}
+  .stamp{left:-75px;right:auto;bottom:120px}
+  .hero-media figcaption{justify-content:flex-end}
+  .score{grid-column:1/5;flex-direction:column;align-items:flex-start;border-bottom:0;border-right:1px solid var(--line);padding-right:var(--space-6);margin-top:var(--space-8)}
+  .pull{grid-column:5/13;margin-top:var(--space-8)}
+  .rail{grid-auto-columns:calc((100% - 2 * var(--gutter) - 3 * var(--space-4)) / 3.2)}
+  .counter-side{grid-column:1/6;position:sticky;top:96px;align-self:start}
+  .counter-side h2{font-size:var(--step-4)}
+  .menu-list{grid-column:7/13;margin-top:0}
+  .menu-list li{padding:var(--space-7) 0}
+  .gallery-head{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:end}
+  .gallery-head h2{max-width:14ch}
+  .collage{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .c1{grid-column:1/6}
+  .c2{grid-column:7/10;margin-top:var(--space-10)!important}
+  .c3{grid-column:10/13;margin-top:var(--space-6)!important}
+  .lunch-copy{grid-column:1/7}
+  .lunch-quote{grid-column:8/13;margin-top:0;border-top:0;border-left:1px solid rgba(245,239,228,.25);padding:0 0 0 var(--space-7);align-self:end}
+  .now{grid-column:1/-1}
+  .hours{grid-column:1/6}
+  .where{grid-column:7/13;margin-top:var(--space-8)}
+  .map{aspect-ratio:16/11}
+  .facts{grid-template-columns:1fr 1fr}
+  .contact-in{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .contact-in>.label,.contact-in>.phone-big{grid-column:1/-1}
+  .contact-in>h2{grid-column:1/7;grid-row:2}
+  .contact-list{grid-column:8/13;grid-row:2;align-self:end;margin-top:0}
+  .ftr-grid{grid-template-columns:2fr 1fr 1fr;align-items:start}
+}
+
+/* ---------- Motion (JS-enhanced only) ---------- */
+.js .hdr{animation:fadeIn var(--dur-3) var(--ease-out) both}
+.js .hero h1 .ln>span{transform:translateY(105%);transition:transform 900ms var(--ease-out);transition-delay:calc(150ms + var(--i) * 80ms)}
+.js .hero .rv{opacity:0;transform:translateY(16px);transition:opacity var(--dur-3) var(--ease-out),transform var(--dur-3) var(--ease-out);transition-delay:calc(420ms + var(--i) * 70ms)}
+.js .hero .frame{clip-path:inset(12% 8% 12% 8% round var(--r-2));transition:clip-path 1100ms var(--ease-out) 250ms}
+.js .hero .frame img{transform:scale(1.08);transition:transform 1400ms var(--ease-out) 250ms}
+.js .hero .stamp{opacity:0;transform:scale(.7) rotate(-30deg);transition:opacity var(--dur-3) var(--ease-out) 800ms,transform var(--dur-3) var(--ease-out) 800ms}
+.js.loaded .hero h1 .ln>span,.js.loaded .hero .rv{transform:none;opacity:1}
+.js.loaded .hero .frame{clip-path:inset(0 0 0 0 round var(--r-2))}
+.js.loaded .hero .frame img{transform:none}
+.js.loaded .hero .stamp{opacity:1;transform:none}
+.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity var(--dur-3) var(--ease-out),transform var(--dur-3) var(--ease-out);transition-delay:calc(var(--i,0) * 80ms)}
+.js [data-reveal].is-in{opacity:1;transform:none}
+.js .rv-photo[data-reveal]{transform:none;opacity:1}
+.js .rv-photo .photo{clip-path:inset(0 0 100% 0);transition:clip-path 1100ms var(--ease-out)}
+.js .rv-photo.is-in .photo{clip-path:inset(0)}
+.js .rv-photo figcaption{opacity:0;transition:opacity var(--dur-3) var(--ease-out) 500ms}
+.js .rv-photo.is-in figcaption{opacity:1}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes drift{from{transform:translateY(-4%)}to{transform:translateY(4%)}}
+@supports (animation-timeline:view()){
+  .hero .frame .par{animation:drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .hero h1 .ln>span,.js .hero .rv,.js [data-reveal],.js .hero .stamp{opacity:1!important;transform:none!important}
+  .js .hero .frame,.js .rv-photo .photo{clip-path:none!important}
+  .js .rv-photo figcaption{opacity:1!important}
+  .js .hero .frame img{transform:none!important}
+  .marquee{width:auto;flex-wrap:wrap;padding-inline:var(--gutter)}
+  .marquee ul+ul{display:none}
+  .marquee ul{flex-wrap:wrap;white-space:normal;gap:var(--space-3) var(--space-5)}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Bakery",
+  "name":"The Bakery, Shawbury",
+  "telephone":"+441939768017",
+  "email":"thebakeryshawbury@gmail.com",
+  "address":{"@type":"PostalAddress","streetAddress":"2 Drayton Rd","addressLocality":"Shawbury, Shrewsbury","postalCode":"SY4 4NZ","addressCountry":"GB"},
+  "geo":{"@type":"GeoCoordinates","latitude":52.787653,"longitude":-2.6554416},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"14:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"08:00","closes":"14:00"}
+  ],
+  "servesCuisine":"Bakery, sandwiches",
+  "hasMap":"https://www.google.com/maps/place/?q=place_id:ChIJc8OZXzWbekgR_mMxNIcp634",
+  "sameAs":["https://www.facebook.com/thebakeryshawbury/"]
+}
+</script>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://the-bakery-shawbury-shrewsbury.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://the-bakery-shawbury-shrewsbury.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://the-bakery-shawbury-shrewsbury.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.9 6.9l1.5-2.3L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8.5V7a1.5 1.5 0 0 1 1.5-1.5H17V2.5h-2.5A4.5 4.5 0 0 0 10 7v1.5H7.5v3H10v10h4v-10h2.6l.4-3z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-seat" viewBox="0 0 24 24"><path d="M4 10h16M6 10v10M18 10v10M8 10l1-6h6l1 6"/></symbol>
+  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="11" cy="4" r="1.6"/><path d="M11 7v6h5l2 5"/><path d="M8 10a5.5 5.5 0 1 0 7 7.5"/></symbol>
+  <symbol id="i-park" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M10 17V7h3a3 3 0 0 1 0 6h-3"/></symbol>
+</svg>
+
+<header class="hdr" id="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="The Bakery, Shawbury — back to top"><span>The Bakery</span><span>Shawbury</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="draw" href="#reviews">Reviews</a>
+      <a class="draw" href="#counter">On the counter</a>
+      <a class="draw" href="#lunch">Buffet lunches</a>
+      <a class="draw" href="#visit">Hours &amp; map</a>
+    </nav>
+    <a class="btn hdr-cta" href="tel:+441939768017"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>01939 768017</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="lbl">Menu</span><span class="burger" aria-hidden="true"></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <ol>
+    <li><a href="#reviews" style="--i:0">Reviews</a></li>
+    <li><a href="#counter" style="--i:1">On the counter</a></li>
+    <li><a href="#lunch" style="--i:2">Buffet lunches</a></li>
+    <li><a href="#visit" style="--i:3">Hours &amp; map</a></li>
+    <li><a href="#contact" style="--i:4">Contact</a></li>
+  </ol>
+  <div class="menu-foot">
+    <span class="status js-status" data-state="unknown">Mon–Fri 7 am–2 pm · Sat 8 am–2 pm</span>
+    <a href="tel:+441939768017">01939 768017</a>
+    <span>2 Drayton Rd, Shawbury, SY4 4NZ</span>
+  </div>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap grid">
+      <div class="hero-top">
+        <a class="rating-chip rv" style="--i:0" href="https://www.google.com/maps/place/?q=place_id:ChIJc8OZXzWbekgR_mMxNIcp634" target="_blank" rel="noopener">
+          <span class="stars" aria-hidden="true">★★★★★</span><strong>4.7</strong><small class="ulink">117 Google reviews</small>
+        </a>
+        <h1 id="h1"><span class="ln"><span style="--i:0">Hot sausage</span></span><span class="ln"><span style="--i:1">rolls on</span></span><span class="ln"><span style="--i:2"><em>Drayton Road.</em></span></span></h1>
+      </div>
+      <figure class="hero-media">
+        <div class="stamp" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 160 160"><circle class="disc" cx="80" cy="80" r="78"/><circle cx="80" cy="80" r="74" fill="none" stroke="currentColor" stroke-width="1"/><defs><path id="circ" d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ">Fresh made sandwiches · Pasties &amp; cakes · </textPath></text></svg>
+          <div class="core"><svg viewBox="0 0 48 48"><path d="M8 30c0-8 7-13 16-13s16 5 16 13c0 3-3 5-7 5H15c-4 0-7-2-7-5z"/><path d="M17 21l-3 7M24 19l-2 9M31 21l-1 7"/></svg></div>
+        </div>
+        <div class="frame"><div class="par"><img src="assets/photos/photo-02.jpg" width="1600" height="900" fetchpriority="high" alt="The Bakery's shopfront on Drayton Road, Shawbury: brick terrace, scalloped awning, café tables and bikes outside, a chalkboard listing pasties, cakes and fresh made sandwiches"></div></div>
+        <figcaption><span>2 Drayton Rd, Shawbury</span></figcaption>
+      </figure>
+      <div class="hero-bottom">
+        <p class="eyebrow rv" style="--i:1">Bakery &amp; sandwich shop <i aria-hidden="true"></i> Shawbury</p>
+        <p class="lead rv" style="--i:2">Rolls and sandwiches made to order, pasties, Scotch eggs and fresh cream cakes. Doors open at 7&nbsp;am on weekdays, 8&nbsp;am on Saturdays.</p>
+        <p class="rv" style="--i:3;margin-top:var(--space-5)"><span class="status js-status" data-state="unknown">Mon–Sat from 7 am</span></p>
+        <div class="hero-ctas rv" style="--i:4">
+          <a class="btn" href="tel:+441939768017"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Call the shop</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Bakery%2C%20Shawbury%2C%202%20Drayton%20Rd%2C%20Shawbury%2C%20Shrewsbury%2C%20SY4%204NZ" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="band" aria-labelledby="band-h">
+    <div class="wrap band-head"><span id="band-h">What reviewers order</span><span aria-hidden="true" class="band-note">Mentions in Google reviews</span></div>
+    <div class="marquee">
+      <ul>
+        <li>Sandwiches<sup>16</sup></li><li>Sausage rolls<sup>6</sup></li><li>Scotch eggs<sup>4</sup></li><li>Bacon rolls<sup>4</sup></li><li>Pasties<sup>4</sup></li><li>Hot pork &amp; stuffing bap<sup>2</sup></li><li>Ham salad bap<sup>2</sup></li><li>Pork pies<sup>2</sup></li><li>Fresh cake<sup>2</sup></li><li>Sausage sandwich<sup>2</sup></li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Sandwiches<sup>16</sup></li><li>Sausage rolls<sup>6</sup></li><li>Scotch eggs<sup>4</sup></li><li>Bacon rolls<sup>4</sup></li><li>Pasties<sup>4</sup></li><li>Hot pork &amp; stuffing bap<sup>2</sup></li><li>Ham salad bap<sup>2</sup></li><li>Pork pies<sup>2</sup></li><li>Fresh cake<sup>2</sup></li><li>Sausage sandwich<sup>2</sup></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews" aria-labelledby="rev-h">
+    <div class="wrap grid">
+      <p class="label" style="grid-column:1/-1" data-reveal><b>01</b> In their words</p>
+      <h2 id="rev-h" class="sr">Reviews</h2>
+      <div class="score" data-reveal>
+        <span class="big">4.7</span>
+        <p><span class="stars" aria-label="4.7 out of 5 stars">★★★★★</span>Out of 5, from 117 reviews<br><a class="ulink" href="https://www.google.com/maps/place/?q=place_id:ChIJc8OZXzWbekgR_mMxNIcp634" target="_blank" rel="noopener">Read all 117 reviews on Google</a></p>
+      </div>
+      <figure class="pull" data-reveal style="--i:1">
+        <p class="pre">“As a professional sausage roll eater, this is ultimately the best on the planet… superb, very polite staff,</p>
+        <blockquote><p>the quality to <em>pastry ratio</em> is perfection.”</p></blockquote>
+        <figcaption><b>grange247</b><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Google review, August 2025</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="rail-wrap">
+      <div class="wrap rail-head">
+        <h3 data-reveal>On the way through</h3>
+        <span class="rail-hint" aria-hidden="true">Swipe <svg class="ico" width="18" height="18"><use href="#i-arrow"/></svg></span>
+      </div>
+      <ul class="rail" aria-label="Google reviews" tabindex="0">
+        <li class="card card--short" data-reveal>
+          <blockquote>“Great cafe, friendly staff perfect stop off on a ride.”</blockquote>
+          <footer><b>Simon C.</b><span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> · Jul 2026</span></footer>
+        </li>
+        <li class="card" data-reveal style="--i:1">
+          <blockquote>“Was very welcoming, seems to have a good local fan base which is always good to see. Very nice food which we both agreed was great and reasonable prices.”</blockquote>
+          <footer><b>Muimoridin</b><span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> · Jul 2026</span></footer>
+        </li>
+        <li class="card" data-reveal style="--i:2">
+          <blockquote>“Had a lovely ham salad bap as part of the meal deal… good value for money and will almost certainly call in again if passing through the area”</blockquote>
+          <footer><b>Ay U.</b><span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> · Oct 2020</span></footer>
+        </li>
+        <li class="card card--short" data-reveal style="--i:3">
+          <blockquote>“Can’t wait to visit again. Well done, especially Saturday am staff”</blockquote>
+          <footer><b>grange247</b><span><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> · Aug 2025</span></footer>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COUNTER -->
+  <section class="counter" id="counter" aria-labelledby="counter-h">
+    <div class="wrap grid">
+      <div class="counter-side">
+        <p class="label" data-reveal><b>02</b> On the counter</p>
+        <h2 id="counter-h" data-reveal>Filled to order, or straight off the shelf.</h2>
+        <p data-reveal>Sixteen Google reviews mention the sandwiches. Six single out the sausage rolls.</p>
+        <figure class="rv-photo" data-reveal>
+          <div class="photo"><img src="assets/photos/photo-05.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Inside The Bakery: a glass cabinet of cakes and traybakes on a navy counter, under the hot drinks and sandwich board"></div>
+          <figcaption>The counter, under the board.</figcaption>
+        </figure>
+      </div>
+      <ol class="menu-list">
+        <li data-reveal>
+          <h3>Sandwiches &amp; rolls</h3>
+          <p>Made to order. Regulars ask for the ham salad bap, the hot pork and stuffing bap, bacon rolls and sausage sandwiches.</p>
+          <div class="meta"><span>Sandwiches · 16 reviews</span><span>Bacon rolls · 4</span></div>
+        </li>
+        <li data-reveal>
+          <h3>Hot sausage rolls &amp; savouries</h3>
+          <p>Sausage rolls, pasties, Scotch eggs and pork pies.</p>
+          <div class="meta"><span>Sausage rolls · 6 reviews</span><span>Scotch eggs · 4</span><span>Pasties · 4</span></div>
+        </li>
+        <li data-reveal>
+          <h3>Cream cakes &amp; fresh bread</h3>
+          <p>Fresh cream cakes and a selection of cakes, with fresh bread alongside.</p>
+        </li>
+        <li data-reveal>
+          <h3>Coffee, tea &amp; cold drinks</h3>
+          <p>To take away, or at the tables out front.</p>
+        </li>
+        <li data-reveal>
+          <h3>Buffet lunches for work</h3>
+          <p>Business lunches catered. <a class="ulink" href="#lunch">How it works</a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" aria-labelledby="gal-h">
+    <div class="wrap grid">
+      <div class="gallery-head">
+        <p class="label" data-reveal><b>03</b> As photographed by customers</p>
+        <h2 id="gal-h" data-reveal>Floured baps, white paper, no fuss.</h2>
+      </div>
+      <div class="collage">
+        <figure class="c1 rv-photo" data-reveal>
+          <div class="photo"><img src="assets/photos/photo-03.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="A floured white bap filled with ham, cucumber and lettuce, on white sandwich paper"></div>
+          <figcaption>A floured bap, wrapped to take away.</figcaption>
+        </figure>
+        <figure class="c2 rv-photo" data-reveal>
+          <div class="photo"><img src="assets/photos/photo-04.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="An opened bap showing folded ham, cucumber, tomato and lettuce"></div>
+          <figcaption>Ham, cucumber, tomato, lettuce.</figcaption>
+        </figure>
+        <figure class="c3 rv-photo" data-reveal>
+          <div class="photo"><img src="assets/photos/photo-01.jpg" width="1205" height="1600" loading="lazy" decoding="async" alt="A small black curly-haired dog in a red harness looking up from the shop floor"></div>
+          <figcaption><q>Popped in here on my trip away with my fur baby. Was very welcoming…</q>Muimoridin, Google review</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUNCH -->
+  <section class="lunch" id="lunch" aria-labelledby="lunch-h">
+    <div class="wrap grid">
+      <div class="lunch-copy">
+        <p class="label" data-reveal><b>04</b> For the office</p>
+        <h2 id="lunch-h" data-reveal>Buffet lunch for a work function. <em>And there was loads.</em></h2>
+        <p data-reveal>The ladies at The Bakery cater business lunches. Ring the shop or send an email with your date and numbers.</p>
+        <ul class="lunch-list" data-reveal aria-label="What went on one buffet, according to a review">
+          <li>Sandwiches</li><li>Sausage rolls</li><li>Scotch eggs</li><li>Pork pies</li><li>Crisps</li><li>Cakes</li>
+        </ul>
+        <div class="lunch-ctas" data-reveal>
+          <a class="btn btn--light" href="mailto:thebakeryshawbury@gmail.com?subject=Buffet%20lunch%20enquiry&amp;body=Hello%2C%0A%0AI%E2%80%99d%20like%20to%20ask%20about%20a%20buffet%20lunch.%0A%0ADate%3A%20%0ANumber%20of%20people%3A%20%0A%0AThank%20you%2C%0A"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>Email about a buffet</a>
+          <a class="btn btn--light btn--ghost" href="tel:+441939768017"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>01939 768017</a>
+        </div>
+      </div>
+      <figure class="lunch-quote" data-reveal style="--i:1">
+        <blockquote><p>“The ladies provided a buffet lunch for a work function. It was excellent. The food was made to a very high standard… It was very reasonably priced and there was loads. Everybody was very happy with their lunch.”</p></blockquote>
+        <figcaption><b>Derek A.</b><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><span>Dec 2024</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit" aria-labelledby="visit-h">
+    <div class="wrap grid">
+      <p class="label" style="grid-column:1/-1" data-reveal><b>05</b> Hours &amp; finding us</p>
+      <div class="now" data-reveal>
+        <h2 id="visit-h" class="now-big" data-state="unknown"><span>Six mornings</span>a week, from 7&nbsp;am.</h2>
+        <p class="now-sub" id="now-sub">Monday to Friday 7&nbsp;am–2&nbsp;pm, Saturday 8&nbsp;am–2&nbsp;pm. Closed Sunday.</p>
+      </div>
+      <div class="hours" data-reveal>
+        <h3>Opening hours</h3>
+        <table>
+          <caption class="sr">Opening hours</caption>
+          <tbody>
+            <tr data-day="monday" data-hours="7 am–2 pm"><th scope="row">Monday</th><td>7 am–2 pm</td></tr>
+            <tr data-day="tuesday" data-hours="7 am–2 pm"><th scope="row">Tuesday</th><td>7 am–2 pm</td></tr>
+            <tr data-day="wednesday" data-hours="7 am–2 pm"><th scope="row">Wednesday</th><td>7 am–2 pm</td></tr>
+            <tr data-day="thursday" data-hours="7 am–2 pm"><th scope="row">Thursday</th><td>7 am–2 pm</td></tr>
+            <tr data-day="friday" data-hours="7 am–2 pm"><th scope="row">Friday</th><td>7 am–2 pm</td></tr>
+            <tr data-day="saturday" data-hours="8 am–2 pm"><th scope="row">Saturday</th><td>8 am–2 pm</td></tr>
+            <tr data-day="sunday" data-hours="Closed" class="is-closed"><th scope="row">Sunday</th><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <ul class="facts">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Takeaway</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-seat"/></svg>Outdoor seating</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-wheel"/></svg>Wheelchair-accessible entrance</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-park"/></svg>Street parking</li>
+        </ul>
+      </div>
+      <div class="where" data-reveal style="--i:1">
+        <h3>Where</h3>
+        <address>2 Drayton Rd, Shawbury,<br>Shrewsbury SY4 4NZ</address>
+        <div class="map">
+          <a class="map-fallback" href="https://www.google.com/maps/place/?q=place_id:ChIJc8OZXzWbekgR_mMxNIcp634" target="_blank" rel="noopener">Open in Google Maps</a>
+          <iframe src="https://www.google.com/maps?q=The%20Bakery%2C%20Shawbury%2C%202%20Drayton%20Rd%2C%20Shawbury%2C%20Shrewsbury%2C%20SY4%204NZ&amp;output=embed" title="Map: The Bakery, 2 Drayton Rd, Shawbury" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="btns">
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Bakery%2C%20Shawbury%2C%202%20Drayton%20Rd%2C%20Shawbury%2C%20Shrewsbury%2C%20SY4%204NZ" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Get directions</a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/place/?q=place_id:ChIJc8OZXzWbekgR_mMxNIcp634" target="_blank" rel="noopener">View on Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap grid">
+      <div class="contact-in">
+        <p class="label" data-reveal><b>06</b> Contact</p>
+        <h2 id="contact-h" data-reveal>Ordering for a crowd? Ring the shop.</h2>
+        <a class="phone-big draw" href="tel:+441939768017" data-reveal>01939 768017</a>
+        <div class="contact-list" data-reveal>
+          <a href="mailto:thebakeryshawbury@gmail.com?subject=Hello%20from%20the%20website"><span><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>thebakeryshawbury@gmail.com</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="https://www.facebook.com/thebakeryshawbury/" target="_blank" rel="noopener"><span><svg class="ico" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Bakery%2C%20Shawbury%2C%202%20Drayton%20Rd%2C%20Shawbury%2C%20Shrewsbury%2C%20SY4%204NZ" target="_blank" rel="noopener"><span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>2 Drayton Rd, SY4 4NZ</span><svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <a class="mark" href="#top" aria-label="Back to top"><span>The Bakery</span><span>Shawbury</span></a>
+      <div>Bakery &amp; sandwich shop<br>2 Drayton Rd, Shawbury,<br>Shrewsbury SY4 4NZ</div>
+      <div><a href="tel:+441939768017">01939 768017</a><br><a href="https://www.facebook.com/thebakeryshawbury/" target="_blank" rel="noopener" aria-label="The Bakery, Shawbury on Facebook"><svg class="ico" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></div>
+    </div>
+    <div class="ftr-bottom"><span>© <span id="year">2026</span> The Bakery, Shawbury</span><span>Mon–Fri 7 am–2 pm · Sat 8 am–2 pm</span></div>
+  </div>
+</footer>
+
+<nav class="bar" aria-label="Quick actions">
+  <a href="tel:+441939768017"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Bakery%2C%20Shawbury%2C%202%20Drayton%20Rd%2C%20Shawbury%2C%20Shrewsbury%2C%20SY4%204NZ" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+  <a href="mailto:thebakeryshawbury@gmail.com?subject=Order%20enquiry&amp;body=Hello%2C%0A%0A"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+</nav>
+
+<script>
+(function(){
+  var d=document,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('loaded')})});
+  d.getElementById('year').textContent=new Date().getFullYear();
+
+  /* Header shrink */
+  var hdr=d.querySelector('.hdr'),tick=0;
+  function onScroll(){tick=0;hdr.classList.toggle('is-scrolled',scrollY>24)}
+  addEventListener('scroll',function(){if(!tick){tick=1;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+  /* Menu */
+  var btn=d.querySelector('.menu-btn'),menu=d.getElementById('menu'),lbl=btn.querySelector('.lbl');
+  function setMenu(open){
+    root.classList.toggle('menu-open',open);btn.setAttribute('aria-expanded',open);lbl.textContent=open?'Close':'Menu';
+    d.body.style.overflow=open?'hidden':'';
+    if(open)setTimeout(function(){menu.querySelector('a').focus({preventScroll:true})},200);
+  }
+  btn.addEventListener('click',function(){setMenu(btn.getAttribute('aria-expanded')!=='true')});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'&&root.classList.contains('menu-open')){setMenu(false);btn.focus()}});
+
+  /* Reveals */
+  var els=d.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window&&!rm){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){io.observe(el)});
+  }else els.forEach(function(el){el.classList.add('is-in')});
+
+  /* Parallax fallback (no scroll-driven animations) */
+  var par=d.querySelector('.hero .par');
+  if(par&&!rm&&!(window.CSS&&CSS.supports('animation-timeline','view()'))){
+    var pt=0;addEventListener('scroll',function(){if(pt)return;pt=1;requestAnimationFrame(function(){pt=0;var y=Math.min(scrollY,innerHeight);par.style.transform='translateY('+(y*0.06)+'px)'})},{passive:true});
+  }
+
+  /* Live opening status (Europe/London) */
+  var DAYS=['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  var NAMES=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  var rows=d.querySelectorAll('tr[data-day]'),sched={};
+  function tm(s){var m=s.match(/(\d{1,2})(?:[:.h](\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?/i);if(!m)return null;return{h:+m[1],m:+(m[2]||0),x:m[3]?m[3].charAt(0).toLowerCase():''}}
+  function mins(t,x){var h=t.h,x2=t.x||x;if(x2==='p'&&h<12)h+=12;if(x2==='a'&&h===12)h=0;return h*60+t.m}
+  function parse(s){
+    s=(s||'').trim();if(!s||/closed|fermé/i.test(s))return[];
+    if(/24\s*h|24 hours|open 24/i.test(s))return[[0,1440]];
+    return s.split(/[,;]/).map(function(r){
+      var p=r.split(/\s*[–—-]\s*|\s+to\s+/i);if(p.length<2)return null;
+      var a=tm(p[0]),b=tm(p[1]);if(!a||!b)return null;
+      var st=mins(a,b.x),en=mins(b,'');if(en<=st)en+=1440;return[st,en];
+    }).filter(Boolean);
+  }
+  rows.forEach(function(r){sched[r.dataset.day]=parse(r.dataset.hours)});
+  function fmt(v){v=v%1440;var h=Math.floor(v/60),m=v%60,h12=h%12||12;return h12+(m?':'+(m<10?'0':'')+m:'')+' '+(h<12?'am':'pm')}
+  function now(){
+    try{var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()),o={};
+      p.forEach(function(x){o[x.type]=x.value});return{d:DAYS.indexOf(o.weekday.toLowerCase()),m:(+o.hour%24)*60+(+o.minute)}}
+    catch(e){var n=new Date();return{d:(n.getDay()+6)%7,m:n.getHours()*60+n.getMinutes()}}
+  }
+  function status(){
+    var n=now(),t=DAYS[n.d],y=DAYS[(n.d+6)%7],i,r;
+    var today=sched[t]||[],yest=sched[y]||[];
+    for(i=0;i<yest.length;i++){r=yest[i];if(r[1]>1440&&n.m<r[1]-1440)return{open:1,until:r[1]}}
+    for(i=0;i<today.length;i++){r=today[i];if(n.m>=r[0]&&n.m<r[1])return{open:1,until:r[1],left:r[1]-n.m}}
+    for(i=0;i<today.length;i++){r=today[i];if(r[0]>n.m)return{open:0,at:r[0],when:'today'}}
+    for(i=1;i<=7;i++){var k=(n.d+i)%7,s=sched[DAYS[k]]||[];if(s.length)return{open:0,at:s[0][0],when:i===1?'tomorrow':NAMES[k]}}
+    return null;
+  }
+  var st=status();
+  rows.forEach(function(r){r.classList.toggle('is-today',r.dataset.day===DAYS[now().d])});
+  if(st){
+    var label,state,big=d.querySelector('.now-big'),sub=d.getElementById('now-sub');
+    if(st.open){
+      state=st.left!=null&&st.left<=30?'soon':'open';
+      label=(state==='soon'?'Closing soon':'Open now')+' · until '+fmt(st.until);
+      big.innerHTML='<span>Open now,</span>until '+fmt(st.until)+'.';
+    }else{
+      state='closed';
+      var w=st.when==='today'?'at '+fmt(st.at):(st.when==='tomorrow'?'tomorrow at ':st.when+' at ')+(st.when==='today'?'':fmt(st.at));
+      label='Closed · opens '+w;
+      big.innerHTML='<span>Closed now.</span>Opens '+w+'.';
+    }
+    big.dataset.state=state;
+    sub.textContent='Open six days: Monday to Friday 7 am–2 pm, Saturday 8 am–2 pm. Closed Sunday.';
+    d.querySelectorAll('.js-status').forEach(function(el){el.textContent=label;el.dataset.state=state});
+  }
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Preview made by Aymen Jallouli for The Bakery, Shawbury: this is not yet the business's official website.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
